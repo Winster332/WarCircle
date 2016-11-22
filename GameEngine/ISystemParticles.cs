@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameEngine
 {
-	public interface Files : IDisposable
+	public interface ISystemParticles : IDisposable
 	{
 	}
 }

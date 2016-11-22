@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameEngine.Engine
 {
-	public class ImplamentFiles : Files
+	public class ImplamentFiles : IFiles
 	{
 		public void Dispose()
 		{

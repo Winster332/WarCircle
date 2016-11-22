@@ -17,6 +17,8 @@ namespace GameEngine
 
 		private void GameWindow_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
 		{
+			// TODO init
+			Initialize();
 		}
 
 		protected abstract void Initialize();

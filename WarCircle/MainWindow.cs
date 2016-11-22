@@ -9,7 +9,6 @@ namespace WarCircle
 		public MainWindow(string title) : base(title) {}
 		protected override void Initialize()
 		{
-
 		}
 	}
 }

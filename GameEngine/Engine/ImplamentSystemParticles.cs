@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameEngine.Engine
 {
-	public class ImplamentSystemParticles : SystemParticles
+	public class ImplamentSystemParticles : ISystemParticles
 	{
 		public void Dispose()
 		{

@@ -55,7 +55,7 @@
     <Compile Include="Engine\ImplamentInput.cs" />
     <Compile Include="Engine\ImplamentSystemParticles.cs" />
     <Compile Include="Engine\ManagementScreen.cs" />
-    <Compile Include="Files.cs" />
+    <Compile Include="IFiles.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameWindow.cs">
       <SubType>Form</SubType>
@@ -63,7 +63,7 @@
     <Compile Include="IGraphics.cs" />
     <Compile Include="IInput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SystemParticles.cs" />
+    <Compile Include="ISystemParticles.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
