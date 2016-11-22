@@ -30,6 +30,13 @@ namespace WarCircle.Screens
 		public override void Step(float dt)
 		{
 			x += 1 * dt;
+
+			var keys = Game.GetInstance().GetInput().GetKeyboardDown();
+            for (int i = 0; i < keys.Count; i++)
+			{
+				if (keys[i] == System.Windows.Forms.Keys.Escape)
+					System.Windows.Forms.Application.Exit();
+			}
 		}
 	}
 }

@@ -23,6 +23,13 @@ namespace GameEngine
 
 			this.FormClosed += GameWindow_Disposed;
 
+			this.MouseDown += (o, e) => { Game.GetInstance().GetInput().SetMouse(e, MouseState.Down); };
+			this.MouseMove += (o, e) => { Game.GetInstance().GetInput().SetMouse(e, MouseState.Move); };
+			this.MouseUp += (o, e) => { Game.GetInstance().GetInput().SetMouse(e, MouseState.Up); };
+
+			this.KeyDown += (o, e) => { Game.GetInstance().GetInput().SetKeyboardDown(e.KeyCode); };
+			this.KeyUp += (o, e) => { Game.GetInstance().GetInput().SetKeyboardUp(e.KeyCode); };
+
 			Initialize();
 		}
 

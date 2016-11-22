@@ -8,5 +8,21 @@ namespace GameEngine
 {
 	public interface IInput : IDisposable
 	{
+		List<System.Windows.Forms.Keys> GetKeyboardDown();
+		List<System.Windows.Forms.Keys> GetKeyboardUp();
+		void SetKeyboardDown(System.Windows.Forms.Keys key);
+		void SetKeyboardUp(System.Windows.Forms.Keys key);
+		void SetMaxLength(int size);
+		int GetMaxLength();
+		void SetMouse(System.Windows.Forms.MouseEventArgs mouse, MouseState state);
+		Tuple<System.Windows.Forms.MouseEventArgs, MouseState> GetMouse();
+		void Update();
+	}
+	public enum MouseState
+	{
+		Down,
+		Up,
+		Move,
+		none
 	}
 }

@@ -40,6 +40,7 @@ namespace GameEngine
 		{
 			if (State == GameState.Running)
 				mScreen.Step(dt);
+			input.Update();
 		}
 		public void Draw()
 		{
