@@ -32,6 +32,7 @@ namespace WarCircle.Screens
 			x += 1 * dt;
 
 			var keys = Game.GetInstance().GetInput().GetKeyboardDown();
+			Console.WriteLine(keys.Count);
             for (int i = 0; i < keys.Count; i++)
 			{
 				if (keys[i] == System.Windows.Forms.Keys.Escape)

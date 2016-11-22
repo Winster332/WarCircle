@@ -49,15 +49,13 @@ namespace GameEngine.Engine
 		{
 			keysDown.Add(key);
 
-			if (keysDown.Count > maxSize)
-				keysDown.RemoveAt(keysDown.Count - 1);
+			
 		}
 		public void SetKeyboardUp(Keys key)
 		{
 			keysUp.Add(key);
 
-			if (keysUp.Count > maxSize)
-				keysUp.RemoveAt(keysUp.Count - 1);
+			
 		}
 		public void SetMaxLength(int size)
 		{
@@ -71,9 +69,12 @@ namespace GameEngine.Engine
 		public void Update()
 		{
 			if (keysDown != null)
-				keysDown.Clear();
+				if (keysDown.Count > maxSize)
+					keysDown.RemoveAt(keysDown.Count - 1);
 			if (keysUp != null)
-				keysUp.Clear();
+				if (keysUp.Count > maxSize)
+					keysUp.RemoveAt(keysUp.Count - 1);
+
 			mouseState = MouseState.none;
 		}
 	}
