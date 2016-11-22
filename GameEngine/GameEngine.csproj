@@ -64,6 +64,8 @@
     <Compile Include="IInput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ISystemParticles.cs" />
+    <Compile Include="UI\BaseUI.cs" />
+    <Compile Include="UI\TextBox.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

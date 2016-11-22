@@ -30,7 +30,6 @@ namespace GameEngine
 		{
 			Game.GetInstance().Dispose();
 		}
-
 		private void GameWindow_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
 		{
 			var graphics = e.Graphics;
@@ -49,7 +48,6 @@ namespace GameEngine
 				
 				this.CurrentFrame = 0;
 			}
-		
 
 			graphics.Clear(Game.GetInstance().GetGraphics().GetClearColor());
 			Game.GetInstance().Draw();

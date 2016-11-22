@@ -10,18 +10,22 @@ namespace WarCircle.Screens
 	public class StartScreen : BasicScreen
 	{
 		float x = 0;
+		GameEngine.UI.TextBox t;
 		public override void Dispose()
 		{
 		}
 		public override void Draw()
 		{
-			Game.GetInstance().GetGraphics().Get().DrawLine(new Pen(Color.Gray, 5), 100+x, 100, 100, 200);
+			t.Draw();
 		}
 		public override void Paused()
 		{
 		}
 		public override void Resume()
 		{
+			t = new GameEngine.UI.TextBox();
+			t.X = Game.GetInstance().GetSettings().WindowSize.Width / 2;
+			t.Y = Game.GetInstance().GetSettings().WindowSize.Height / 2;
 		}
 		public override void Step(float dt)
 		{
