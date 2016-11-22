@@ -51,12 +51,11 @@
   <ItemGroup>
     <Compile Include="AppSettings.cs" />
     <Compile Include="BasicScreen.cs" />
-    <Compile Include="Engine\ImplamentFiles.cs" />
+    <Compile Include="Engine\GameState.cs" />
     <Compile Include="Engine\ImplamentGraphics.cs" />
     <Compile Include="Engine\ImplamentInput.cs" />
     <Compile Include="Engine\ImplamentSystemParticles.cs" />
     <Compile Include="Engine\ManagementScreen.cs" />
-    <Compile Include="IFiles.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameWindow.cs">
       <SubType>Form</SubType>

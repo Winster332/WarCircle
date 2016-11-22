@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameEngine
+namespace GameEngine.Engine
 {
-	public interface IFiles : IDisposable
+	public enum GameState
 	{
+		Running,
+		Paused,
+		Initialized,
+		Finished
 	}
 }

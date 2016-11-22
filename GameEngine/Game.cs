@@ -9,16 +9,16 @@ namespace GameEngine
 	public class Game : IDisposable
 	{
 		private static Game instance;
-		private IFiles files;
 		private IGraphics graphics;
 		private IInput input;
 		private ISystemParticles systemParticles;
 		private ManagementScreen mScreen;
 		private AppSettings settings;
+		private GameState State;
 		public static Game GetInstance() => instance == null ? instance = new Game() : instance;
 		private Game()
 		{
-			this.files = new ImplamentFiles();
+			this.State = GameState.Initialized;
 			this.graphics = new ImplamentGraphics();
 			this.input = new ImplamentInput();
 			this.systemParticles = new ImplamentSystemParticles();
@@ -28,28 +28,32 @@ namespace GameEngine
 		}
 		public void Run(BasicScreen screen)
 		{
+			this.State = GameState.Running;
 			mScreen.SetScreen(screen);
 		}
-		public AppSettings GetSettings()
-		{
-			return settings;
-		}
-		public ManagementScreen GetManagementScreen()
-		{
-			return mScreen;
-		}
+		public IGraphics GetGraphics() => graphics;
+		public IInput GetInput() => input;
+		public ISystemParticles GetSystemParticles() => systemParticles;
+		public AppSettings GetSettings() => settings;
+		public ManagementScreen GetManagementScreen() => mScreen;
 		public void Step(float dt)
 		{
-			mScreen.Step(dt);
+			if (State == GameState.Running)
+				mScreen.Step(dt);
 		}
 		public void Draw()
 		{
-			mScreen.Draw();
+			if (State == GameState.Running)
+				mScreen.Draw();
+		}
+		public void Paused()
+		{
+			State = GameState.Paused;
 		}
 		public void Dispose()
 		{
+			State = GameState.Finished;
 			instance.Dispose();
-			files.Dispose();
 			graphics.Dispose();
 			input.Dispose();
 			systemParticles.Dispose();
