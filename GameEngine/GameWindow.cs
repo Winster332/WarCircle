@@ -10,13 +10,15 @@ namespace GameEngine
 	{
 		private int UpdateFrames;
 		private int CurrentFrame;
+		private int PrevTicks;
 		protected GameWindow(string title)
 		{
 			this.Text = title;
 			this.Paint += GameWindow_Paint;
 			this.DoubleBuffered = true;
 			this.CurrentFrame = 0;
-
+			this.PrevTicks = Environment.TickCount;
+			
 			Console.WriteLine(Game.GetInstance().GetSettings().UpdateFrames);
 
 			this.FormClosed += GameWindow_Disposed;
@@ -36,13 +38,18 @@ namespace GameEngine
 
 			Game.GetInstance().GetGraphics().Set(graphics);
 
+			float dt = 1+(PrevTicks - DateTime.Now.Millisecond) / 1000.0f;
+			Console.WriteLine(dt);
+			PrevTicks = DateTime.Now.Millisecond;
+
 			if (CurrentFrame == UpdateFrames)
 			{
-				Game.GetInstance().Step(1f);
-				Update(1f);
+				Game.GetInstance().Step(dt);
+				Update(dt);
 				
 				this.CurrentFrame = 0;
 			}
+		
 
 			graphics.Clear(Game.GetInstance().GetGraphics().GetClearColor());
 			Game.GetInstance().Draw();
