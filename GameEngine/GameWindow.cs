@@ -45,7 +45,6 @@ namespace GameEngine
 			Game.GetInstance().GetGraphics().Set(graphics);
 
 			float dt = 1+(PrevTicks - DateTime.Now.Millisecond) / 1000.0f;
-		//	Console.WriteLine(dt);
 			PrevTicks = DateTime.Now.Millisecond;
 
 			if (CurrentFrame == UpdateFrames)

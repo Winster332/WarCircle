@@ -16,6 +16,8 @@ namespace GameEngine
 		int GetMaxLength();
 		void SetMouse(System.Windows.Forms.MouseEventArgs mouse, MouseState state);
 		Tuple<System.Windows.Forms.MouseEventArgs, MouseState> GetMouse();
+	//	System.Windows.Forms.Keys GetKeyDown();
+	//	System.Windows.Forms.Keys GetKeyUp();
 		void Update();
 	}
 	public enum MouseState

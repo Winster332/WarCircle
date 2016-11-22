@@ -18,7 +18,7 @@ namespace GameEngine.Engine
 		{
 			keysDown = new List<Keys>();
 			keysUp = new List<Keys>();
-			maxSize = 5;
+			maxSize = 0;
 		}
 		public void Dispose()
 		{
@@ -70,10 +70,10 @@ namespace GameEngine.Engine
 		{
 			if (keysDown != null)
 				if (keysDown.Count > maxSize)
-					keysDown.RemoveAt(keysDown.Count - 1);
+					keysDown.Clear();//keysDown.RemoveAt(keysDown.Count - 1);
 			if (keysUp != null)
 				if (keysUp.Count > maxSize)
-					keysUp.RemoveAt(keysUp.Count - 1);
+					keysUp.Clear();//keysUp.RemoveAt(keysUp.Count - 1);
 
 			mouseState = MouseState.none;
 		}

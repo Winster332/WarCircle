@@ -30,7 +30,7 @@ namespace WarCircle.Screens
 		public override void Step(float dt)
 		{
 			x += 1 * dt;
-
+			t.Step(dt);
 			var keys = Game.GetInstance().GetInput().GetKeyboardDown();
 			Console.WriteLine(keys.Count);
             for (int i = 0; i < keys.Count; i++)
