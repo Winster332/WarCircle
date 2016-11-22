@@ -15,8 +15,11 @@ namespace GameEngine.Engine
 		}
 		public void SetScreen(BasicScreen screen)
 		{
-			this.currentScreen.Paused();
-			this.currentScreen.Dispose();
+			if (this.currentScreen != null)
+			{
+				this.currentScreen.Paused();
+				this.currentScreen.Dispose();
+			}
 			screen.Resume();
 			this.currentScreen = screen;
 		}

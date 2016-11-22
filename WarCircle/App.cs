@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using GameEngine;
 using System.Windows.Forms;
 
 namespace WarCircle
@@ -17,7 +17,12 @@ namespace WarCircle
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new MainWindow("War Circle"));
+
+			Game.GetInstance().Run(new Screens.StartScreen());
+			var window = new MainWindow("War Circle");
+			window.SetSettings(Game.GetInstance().GetSettings());
+
+            Application.Run(window);
 		}
 	}
 }

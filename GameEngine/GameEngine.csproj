@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppSettings.cs" />
     <Compile Include="BasicScreen.cs" />
     <Compile Include="Engine\ImplamentFiles.cs" />
     <Compile Include="Engine\ImplamentGraphics.cs" />
