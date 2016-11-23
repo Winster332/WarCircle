@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using GameEngine;
 using System.Windows.Forms;
+using WarCircle.Screens;
 
 namespace WarCircle
 {
@@ -18,7 +19,9 @@ namespace WarCircle
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 
-			Game.GetInstance().Run(new Screens.StartScreen());
+			GameManagerScreens gmScreens = new GameManagerScreens();
+			Game.GetInstance().Run(gmScreens.GetStartScreen());
+
 			var window = new MainWindow("War Circle");
 			window.SetSettings(Game.GetInstance().GetSettings());
 

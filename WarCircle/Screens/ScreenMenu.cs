@@ -8,6 +8,7 @@ namespace WarCircle.Screens
 {
 	public class ScreenMenu : BasicScreen
 	{
+		public event EventHandler IntentTo;
 		public override void Dispose()
 		{
 		}

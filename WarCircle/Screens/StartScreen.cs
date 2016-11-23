@@ -9,13 +9,13 @@ namespace WarCircle.Screens
 {
 	public class StartScreen : BasicScreen
 	{
-		private event EventHandler IntentTo;
 		private StringFormat sf = new StringFormat();
 		private int AlphaScreenMask;
 		private int timePaused = 50;
 		private int valVelAlphaScreenMask = 5;
 		private bool IsShow = true;
 		private bool IsEnableUpdate = true;
+		public event EventHandler IntentTo;
 		public override void Dispose()
 		{
 		}

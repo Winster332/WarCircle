@@ -10,14 +10,16 @@ namespace WarCircle.Screens
 	{
 		private StartScreen startScreen;
 		private ScreenMenu menuScreen;
-		private ScreenRecord recordScreen;
 		private ScreenGame gameScreen;
 		public GameManagerScreens()
 		{
 			startScreen = new StartScreen();
 			menuScreen = new ScreenMenu();
-			recordScreen = new ScreenRecord();
 			gameScreen = new ScreenGame();
+
+			startScreen.IntentTo += (next, _null) => { Game.GetInstance().GetManagementScreen().SetScreen(menuScreen); };
+			menuScreen.IntentTo += (next, _null) => { Game.GetInstance().GetManagementScreen().SetScreen(gameScreen); };
+			gameScreen.IntentTo += (next, _null) => { Game.GetInstance().GetManagementScreen().SetScreen(menuScreen); };
 		}
 		public BasicScreen GetStartScreen() => startScreen;
 	}

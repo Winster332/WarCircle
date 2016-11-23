@@ -2,11 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using GameEngine;
 
 namespace WarCircle.Screens
 {
-	class ScreenGame
+	public class ScreenGame : BasicScreen
 	{
+		public event EventHandler IntentTo;
+		public override void Dispose()
+		{
+		}
+		public override void Draw()
+		{
+		}
+		public override void Paused()
+		{
+		}
+		public override void Resume()
+		{
+		}
+		public override void Step(float dt)
+		{
+		}
 	}
 }
