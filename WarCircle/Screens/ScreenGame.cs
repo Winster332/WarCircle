@@ -29,6 +29,8 @@ namespace WarCircle.Screens
 
 			Game.GetInstance().GetSystemParticles().Draw();
 
+			im.Draw();
+
 			DrawLight();
 		}
 		public override void Paused()
@@ -36,6 +38,7 @@ namespace WarCircle.Screens
 		}
 		public override void Resume()
 		{
+			#region setup
 			IsEnableLight = false;
 			AlphaScreenMask = 255;
 			Closed += (screen, e) => { IntentTo(this, e); };
@@ -55,12 +58,16 @@ namespace WarCircle.Screens
 			textBall.Y = 15;
 			textBall.ForeColor = Color.FromArgb(100, 100, 100);
 			textBall.Text = "0";
+			#endregion
+
+			im = new Models.Im();
 		}
 		public override void Step(float dt)
 		{
 			Game.GetInstance().GetSystemParticles().Step(dt);
 			StepLight(dt);
 
+			im.Step(dt);
 			buttonToMenu.Step(dt);
 			textBall.Step(dt);
 		}
