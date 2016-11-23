@@ -62,7 +62,7 @@ namespace GameEngine.UI
 			sf.Alignment = StringAlignment.Center;
 			sf.LineAlignment = StringAlignment.Center;
 			BorderThrick = 5;
-			ScaleMouseMove = new Point(5, 5);
+			ScaleMouseMove = new Point(0, 0);
 		}
 		public override void Dispose()
 		{

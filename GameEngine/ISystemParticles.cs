@@ -8,5 +8,8 @@ namespace GameEngine
 {
 	public interface ISystemParticles : IDisposable
 	{
-	}
+		void Step(float dt);
+		void Draw();
+		void AddOnFon(float x, float y, System.Drawing.PointF vel);
+    }
 }

@@ -21,10 +21,10 @@ namespace GameEngine
 			this.State = GameState.Initialized;
 			this.graphics = new ImplamentGraphics();
 			this.input = new ImplamentInput();
-			this.systemParticles = new ImplamentSystemParticles();
 			this.mScreen = new ManagementScreen();
 			this.settings = new AppSettings();
 			this.settings.Load();
+			this.systemParticles = new ImplamentSystemParticles(this.settings.WindowSize.Width, this.settings.WindowSize.Height);
 		}
 		public void Run(BasicScreen screen)
 		{
