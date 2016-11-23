@@ -12,9 +12,17 @@ namespace WarCircle.Screens
 		public override void Dispose()
 		{
 		}
+		public override void Step(float dt)
+		{
+			Game.GetInstance().GetSystemParticles().Step(dt);
 
+			StepLight(dt);
+		}
 		public override void Draw()
 		{
+			Game.GetInstance().GetSystemParticles().Draw();
+
+			DrawLight();
 		}
 
 		public override void Paused()
@@ -23,10 +31,8 @@ namespace WarCircle.Screens
 
 		public override void Resume()
 		{
-		}
-
-		public override void Step(float dt)
-		{
+			Closed += (screen, e) => { IntentTo(this, e); };
+			this.EnableLight(true, 5);
 		}
 	}
 }
