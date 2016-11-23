@@ -14,13 +14,13 @@ namespace GameEngine
 		public Size WindowSize;
 		public bool IsDoubleBuffer;
 		public int UpdateFrames;
-		public List<User> ListUsers;
+		public User InfoUser { get; set; }
 		public AppSettings()
 		{
 			WindowSize = new Size(350, 300);
 			IsDoubleBuffer = true;
 			UpdateFrames = 30;
-			ListUsers = new List<User>();
+			InfoUser = new User();
 		}
 		public AppSettings Load()
 		{
@@ -65,7 +65,7 @@ namespace GameEngine
 			this.WindowSize = s.WindowSize;
 			this.IsDoubleBuffer = s.IsDoubleBuffer;
 			this.UpdateFrames = s.UpdateFrames;
-			this.ListUsers = s.ListUsers;
+			this.InfoUser = s.InfoUser;
 
 			return this;
 		}
@@ -76,7 +76,7 @@ namespace GameEngine
 			public int Record;
 			public User()
 			{
-				Name = "";
+				Name = "Player";
 				Record = 0;
 			}
 		}
