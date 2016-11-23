@@ -13,7 +13,6 @@ namespace GameEngine
 		protected int AlphaScreenMask { get; set; }
 		private int timePaused = 50;
 		private int valVelAlphaScreenMask = 5;
-		private bool IsShow = true;
 		public BasicScreen()
 		{
 			IsEnableLight = false;

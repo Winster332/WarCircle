@@ -12,9 +12,13 @@ namespace WarCircle.Screens
 	{
 		public event EventHandler IntentTo;
 		private Button buttonPlay;
-		private StringFormat sf = new StringFormat();
+		private StringFormat sf;
 		public override void Dispose()
 		{
+			buttonPlay.Dispose();
+			sf.Dispose();
+			buttonPlay = null;
+			sf = null;
 		}
 		public override void Step(float dt)
 		{
@@ -43,15 +47,19 @@ namespace WarCircle.Screens
 
 		public override void Resume()
 		{
+			IsEnableLight = false;
+			AlphaScreenMask = 255;
 			Closed += (screen, e) => { IntentTo(this, e); };
 			this.EnableLight(true, 5);
 
+			sf = new StringFormat();
 			sf.Alignment = StringAlignment.Center;
 			sf.LineAlignment = StringAlignment.Center;
 
 			buttonPlay = new Button();
 			buttonPlay.X = Game.GetInstance().GetSettings().WindowSize.Width / 2;
 			buttonPlay.Y = Game.GetInstance().GetSettings().WindowSize.Height / 2 + 50;
+			buttonPlay.BorderThrick = 3;
 			buttonPlay.Click += (o, e) => {	IntentTo(new ScreenGame(), null); };
 			buttonPlay.Text = "ИГРАТЬ";
 		}

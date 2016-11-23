@@ -13,6 +13,8 @@ namespace WarCircle.Screens
 		public event EventHandler IntentTo;
 		public override void Dispose()
 		{
+			sf.Dispose();
+			sf = null;
 		}
 		public override void Draw()
 		{
@@ -27,6 +29,8 @@ namespace WarCircle.Screens
 		}
 		public override void Resume()
 		{
+			IsEnableLight = false;
+			AlphaScreenMask = 255;
 			Closed += (screen, e) => { IntentTo(new ScreenMenu(), e); };
 			this.EnableLight(true, 5, 10);
 
