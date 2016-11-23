@@ -19,7 +19,7 @@ namespace GameEngine
 			this.CurrentFrame = 0;
 			this.PrevTicks = Environment.TickCount;
 			
-			Console.WriteLine(Game.GetInstance().GetSettings().UpdateFrames);
+		//	Console.WriteLine(Game.GetInstance().GetSettings().UpdateFrames);
 
 			this.FormClosed += GameWindow_Disposed;
 

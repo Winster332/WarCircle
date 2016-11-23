@@ -48,14 +48,10 @@ namespace GameEngine.Engine
 		public void SetKeyboardDown(Keys key)
 		{
 			keysDown.Add(key);
-
-			
 		}
 		public void SetKeyboardUp(Keys key)
 		{
 			keysUp.Add(key);
-
-			
 		}
 		public void SetMaxLength(int size)
 		{

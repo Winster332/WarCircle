@@ -29,7 +29,7 @@ namespace GameEngine
 		public void Run(BasicScreen screen)
 		{
 			this.State = GameState.Running;
-				mScreen.SetScreen(screen);
+			mScreen.SetScreen(screen);
 		}
 		public IGraphics GetGraphics() => graphics;
 		public IInput GetInput() => input;
