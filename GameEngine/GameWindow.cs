@@ -9,17 +9,15 @@ namespace GameEngine
 	public abstract class GameWindow : Form
 	{
 		private int UpdateFrames;
-		private int CurrentFrame;
-		private int PrevTicks;
+		public System.Windows.Forms.Timer timer;
 		protected GameWindow(string title)
 		{
 			this.Text = title;
 			this.Paint += GameWindow_Paint;
 			this.DoubleBuffered = true;
-			this.CurrentFrame = 0;
-			this.PrevTicks = Environment.TickCount;
-			
-		//	Console.WriteLine(Game.GetInstance().GetSettings().UpdateFrames);
+			this.timer = new System.Windows.Forms.Timer();
+			this.timer.Tick += Timer_Tick;
+			this.timer.Interval = Game.GetInstance().GetSettings().UpdateFrames;
 
 			this.FormClosed += GameWindow_Disposed;
 
@@ -31,6 +29,13 @@ namespace GameEngine
 			this.KeyUp += (o, e) => { Game.GetInstance().GetInput().SetKeyboardUp(e.KeyCode); };
 
 			Initialize();
+
+			timer.Start();
+		}
+
+		private void Timer_Tick(object sender, EventArgs e)
+		{
+			this.Invalidate();
 		}
 
 		private void GameWindow_Disposed(object sender, EventArgs e)
@@ -40,28 +45,17 @@ namespace GameEngine
 		private void GameWindow_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
 		{
 			var graphics = e.Graphics;
+			var dt = 1f;
 			graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
 			Game.GetInstance().GetGraphics().Set(graphics);
 
-			float dt = 1+(PrevTicks - DateTime.Now.Millisecond) / 1000.0f;
-			PrevTicks = DateTime.Now.Millisecond;
-
-			if (CurrentFrame == UpdateFrames)
-			{
-				Game.GetInstance().Step(dt);
-				Update(dt);
-				
-				this.CurrentFrame = 0;
-			}
+			Game.GetInstance().Step(dt);
+			Update(dt);
 
 			graphics.Clear(Game.GetInstance().GetGraphics().GetClearColor());
 			Game.GetInstance().Draw();
 			Drawing();
-
-			CurrentFrame++;
-
-			this.Invalidate();
 		}
 
 		public void SetSettings(AppSettings settings)
