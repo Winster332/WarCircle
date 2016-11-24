@@ -11,9 +11,25 @@ namespace WarCircle.Models
 	{
 		private List<GameEngine.UI.BaseUI> objects;
 		private static ManagerFlyObjects instance;
+		private Random rand;
+		private int ConstHZGenerateObject;
+		private int CurrentHZGenerateObject;
+		public int HZObjectGenerate {
+			get
+			{
+				return ConstHZGenerateObject;
+			}
+			set
+			{
+				ConstHZGenerateObject = value;
+			}
+		}
 		private ManagerFlyObjects()
 		{
 			objects = new List<GameEngine.UI.BaseUI>();
+			rand = new Random();
+			HZObjectGenerate = 100;
+			CurrentHZGenerateObject = 0;
 		}
 		public static ManagerFlyObjects GetInstance()
 		{
@@ -69,10 +85,37 @@ namespace WarCircle.Models
 				o.Draw();
 			});
 		}
+		public void GenerateRandomModel()
+		{
+			Console.WriteLine("Generate new object");
+			if (CurrentHZGenerateObject < ConstHZGenerateObject)
+				CurrentHZGenerateObject++;
+			else
+			{
+				int idTypeObject = rand.Next(1, 4);
+				float x = 100;
+				float y = 100;
+				float rad = 30;
+				float vx = 0;
+				float vy = 1;
+				Color color = Color.FromArgb(100, 100, 100);
+				float angle = 0;
+				float angularVel = 0;
+
+				switch (idTypeObject)
+				{
+					case 1: AddCircle(x, y, rad, color, vx, vy); break;
+					case 2: AddRect(x, y, rad, color, angle, angularVel, vx, vy); break;
+					case 3: AddLive(x, y, rad, color, angle, angularVel, vx, vy); break;
+				}
+				CurrentHZGenerateObject = 0;
+			}
+		}
 		public void Dispose()
 		{
 			objects.Clear();
 			objects = null;
+			rand = null;
 		}
 	}
 }

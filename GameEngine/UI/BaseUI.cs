@@ -19,9 +19,16 @@ namespace GameEngine.UI
 		public float Angle { get; set; }
 		public float VelocityAngular { get; set; }
 		public System.Drawing.PointF LinearVelocity { get; set; }
+		public bool IsDead { get; set; }
+		public BaseUI()
+		{
+			IsDead = false;
+		}
 		public void BasicPhysicsStep(float dt)
 		{
-
+			X += LinearVelocity.X;
+			Y += LinearVelocity.Y;
+			Angle += VelocityAngular;
 		}
 	}
 }

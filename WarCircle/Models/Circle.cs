@@ -21,7 +21,7 @@ namespace WarCircle.Models
 		}
 		public override void Draw()
 		{
-			Game.GetInstance().GetGraphics().Get().FillEllipse(new SolidBrush(Color), X, Y, 50, 50);
+			Game.GetInstance().GetGraphics().Get().FillEllipse(new SolidBrush(Color), X-Radius, Y-Radius, Radius*2, Radius*2);
 		}
 		public override void Step(float dt)
 		{

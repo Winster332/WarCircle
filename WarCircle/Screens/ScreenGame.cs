@@ -29,6 +29,7 @@ namespace WarCircle.Screens
 
 			Game.GetInstance().GetSystemParticles().Draw();
 
+			Models.ManagerFlyObjects.GetInstance().DrawAndUpdate();
 			im.Draw();
 
 			DrawLight();
@@ -69,6 +70,7 @@ namespace WarCircle.Screens
 			StepLight(dt);
 
 			im.Step(dt);
+			Models.ManagerFlyObjects.GetInstance().GenerateRandomModel();
 			buttonToMenu.Step(dt);
 
 			if (textBall != null)
