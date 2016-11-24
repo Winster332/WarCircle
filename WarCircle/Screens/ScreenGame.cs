@@ -16,6 +16,7 @@ namespace WarCircle.Screens
 		private int _currentBall;
 		private UIText textLive;
 		private Models.Im im;
+		private bool IsGoToMenu = false;
 		private int currentBall
 		{
 			get
@@ -49,6 +50,7 @@ namespace WarCircle.Screens
 			Game.GetInstance().GetSystemParticles().Dispose();
 			Models.ManagerFlyObjects.GetInstance().Dispose();
 			Models.ManagerFlyObjects.GetInstance().DeadObject -= ScreenGame_DeadObject;
+			Models.ManagerFlyObjects.GetInstance().DecrementLive -= ScreenGame_DecrementLive;
 		}
 		public override void Draw()
 		{
@@ -103,8 +105,12 @@ namespace WarCircle.Screens
 			im = new Models.Im();
 			Models.ManagerFlyObjects.GetInstance().SetIm(im);
 			Models.ManagerFlyObjects.GetInstance().DeadObject += ScreenGame_DeadObject;
+			Models.ManagerFlyObjects.GetInstance().DecrementLive += ScreenGame_DecrementLive;
 		}
-
+		private void ScreenGame_DecrementLive(object sender, EventArgs e)
+		{
+			currentLive--;
+		}
 		private void ScreenGame_DeadObject(object sender, EventArgs e)
 		{
 			currentBall++;
@@ -128,6 +134,18 @@ namespace WarCircle.Screens
 			{
 				textBall.Step(dt);
 				textBall.Text = currentBall.ToString();
+			}
+
+			if (currentLive == 0)
+			{
+				IsGoToMenu = true;
+				currentLive = -1;
+			}
+
+			if (IsGoToMenu)
+			{
+				IntentTo(null, null);
+				IsGoToMenu = false;
 			}
 		}
 	}

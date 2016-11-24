@@ -10,6 +10,7 @@ namespace WarCircle.Models
 	public class ManagerFlyObjects : IDisposable
 	{
 		public event EventHandler DeadObject;
+		public event EventHandler DecrementLive;
 		private List<GameEngine.UI.BaseUI> objects;
 		private Models.Im im;
 		private static ManagerFlyObjects instance;
@@ -34,7 +35,7 @@ namespace WarCircle.Models
 		{
 			objects = new List<GameEngine.UI.BaseUI>();
 			rand = new Random();
-			HZObjectGenerate = 100;
+			HZObjectGenerate = 50;
 			CurrentHZGenerateObject = 0;
 		}
 		public static ManagerFlyObjects GetInstance()
@@ -93,6 +94,13 @@ namespace WarCircle.Models
 
 				GameEngine.Game.GetInstance().GetSystemParticles().AddOnEffectFair(o.X, o.Y);
 
+				if (o.Y >= GameEngine.Game.GetInstance().GetSettings().WindowSize.Height - 20)
+				{
+					if (DecrementLive != null)
+						DecrementLive(null, null);
+					objects.RemoveAt(j);
+				}
+
 				o.Draw();
 
 				for (int i = 0; i < im.GetBullets().Count; i++)
@@ -125,7 +133,7 @@ namespace WarCircle.Models
 				float y = -50;
 				float rad = rand.Next(10, 20);
 				float vx = 0;
-				float vy = (float)rand.Next(5, 20) / 10.0f;
+				float vy = (float)rand.Next(10, 30) / 10.0f;
 				Color color = Color.FromArgb(rand.Next(100, 200), rand.Next(100, 200), rand.Next(100, 200));
 				float angle = rand.Next(0, 180);
 				float angularVel = (float)rand.Next(-10, 10) / 10.0f;
