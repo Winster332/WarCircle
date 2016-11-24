@@ -19,7 +19,7 @@ namespace WarCircle.Models
 			{
 				points[0] = new System.Drawing.PointF(0, -value);
 				points[1] = new System.Drawing.PointF(value, value);
-				points[2] = new System.Drawing.PointF(-value, -value);
+				points[2] = new System.Drawing.PointF(-value, value);
 
 				_Radius = value;
 			}

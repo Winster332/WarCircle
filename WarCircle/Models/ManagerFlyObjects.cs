@@ -87,21 +87,22 @@ namespace WarCircle.Models
 		}
 		public void GenerateRandomModel()
 		{
-			Console.WriteLine("Generate new object");
+			
 			if (CurrentHZGenerateObject < ConstHZGenerateObject)
 				CurrentHZGenerateObject++;
 			else
 			{
 				int idTypeObject = rand.Next(1, 4);
-				float x = 100;
-				float y = 100;
-				float rad = 30;
+				float x = rand.Next(20, GameEngine.Game.GetInstance().GetSettings().WindowSize.Width - 40);
+				float y = -50;
+				float rad = rand.Next(10, 20);
 				float vx = 0;
-				float vy = 1;
-				Color color = Color.FromArgb(100, 100, 100);
-				float angle = 0;
-				float angularVel = 0;
+				float vy = (float)rand.Next(5, 20) / 10.0f;
+				Color color = Color.FromArgb(rand.Next(100, 200), rand.Next(100, 200), rand.Next(100, 200));
+				float angle = rand.Next(0, 180);
+				float angularVel = (float)rand.Next(-10, 10) / 10.0f;
 
+				Console.WriteLine("Generate new object " + vy);
 				switch (idTypeObject)
 				{
 					case 1: AddCircle(x, y, rad, color, vx, vy); break;

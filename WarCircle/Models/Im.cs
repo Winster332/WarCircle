@@ -49,6 +49,18 @@ namespace WarCircle.Models
 
 				this.Angle = (float)Math.Atan2(Y - my, X - mx);
 			}
+			if (mouse.Item2 == MouseState.Down)
+			{
+				float mx = mouse.Item1.X;
+				float my = mouse.Item1.Y;
+
+				this.Angle = (float)Math.Atan2(Y - my, X - mx);
+
+				RunBullet((float)Math.Cos(Angle), (float)Math.Sin(Angle));
+			}
+		}
+		public void RunBullet(float vx, float vy)
+		{
 		}
 	}
 }
