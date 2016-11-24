@@ -13,7 +13,10 @@ namespace WarCircle.Screens
 		public event EventHandler IntentTo;
 		private Button buttonToMenu;
 		private UIText textBall;
+		private UIText textLive;
 		private Models.Im im;
+		private int currentBall;
+		private int currentLive;
 		public override void Dispose()
 		{
 			buttonToMenu.Dispose();
@@ -22,11 +25,16 @@ namespace WarCircle.Screens
 			textBall = null;
 			im.Dispose();
 			im = null;
+			textLive.Dispose();
+			textLive = null;
+			currentBall = 0;
+			currentLive = 0;
 		}
 		public override void Draw()
 		{
 			buttonToMenu.Draw();
 			textBall.Draw();
+			textLive.Draw();
 
 			Models.ManagerFlyObjects.GetInstance().DrawAndUpdate();
 			Game.GetInstance().GetSystemParticles().Draw();
@@ -61,10 +69,22 @@ namespace WarCircle.Screens
 			textBall.Y = 15;
 			textBall.ForeColor = Color.FromArgb(100, 100, 100);
 			textBall.Text = "0";
+
+			textLive = new UIText();
+			textLive.X = Game.GetInstance().GetSettings().WindowSize.Width / 2;
+			textLive.Y = 15;
+			textLive.ForeColor = Color.FromArgb(100, 100, 100);
+			textLive.Text = "3";
 			#endregion
 
+			currentBall = 0;
+			currentLive = 3;
 			im = new Models.Im();
 			Models.ManagerFlyObjects.GetInstance().SetIm(im);
+			Models.ManagerFlyObjects.GetInstance().DeadObject += (o, e) =>
+			{
+				currentBall++;
+			};
 		}
 		public override void Step(float dt)
 		{
@@ -75,8 +95,16 @@ namespace WarCircle.Screens
 			Models.ManagerFlyObjects.GetInstance().GenerateRandomModel();
 			buttonToMenu.Step(dt);
 
+			if (textLive != null)
+			{
+				textLive.Step(dt);
+				textLive.Text = currentLive.ToString();
+			}
 			if (textBall != null)
+			{
 				textBall.Step(dt);
+				textBall.Text = currentBall.ToString();
+			}
 		}
 	}
 }

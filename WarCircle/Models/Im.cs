@@ -37,7 +37,7 @@ namespace WarCircle.Models
 				b.BasicPhysicsStep(1f);
 				b.Step(1f);
 
-				GameEngine.Game.GetInstance().GetSystemParticles().AddOnEffectFair(b.X, b.Y);
+				Game.GetInstance().GetSystemParticles().AddOnEffectFair(b.X, b.Y);
 
 				b.Draw();
 

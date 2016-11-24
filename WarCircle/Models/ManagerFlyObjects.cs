@@ -9,6 +9,7 @@ namespace WarCircle.Models
 {
 	public class ManagerFlyObjects : IDisposable
 	{
+		public event EventHandler DeadObject;
 		private List<GameEngine.UI.BaseUI> objects;
 		private Models.Im im;
 		private static ManagerFlyObjects instance;
@@ -103,6 +104,9 @@ namespace WarCircle.Models
 					{
 						b.IsDead = true;
 						o.IsDead = true;
+
+						if (DeadObject != null)
+							DeadObject(null, null);
 					}
 				}
 
