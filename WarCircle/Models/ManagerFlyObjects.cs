@@ -87,7 +87,6 @@ namespace WarCircle.Models
 		}
 		public void GenerateRandomModel()
 		{
-			
 			if (CurrentHZGenerateObject < ConstHZGenerateObject)
 				CurrentHZGenerateObject++;
 			else
