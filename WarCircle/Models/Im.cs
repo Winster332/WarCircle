@@ -36,6 +36,9 @@ namespace WarCircle.Models
 				var b = listBullet[i];
 				b.BasicPhysicsStep(1f);
 				b.Step(1f);
+
+				GameEngine.Game.GetInstance().GetSystemParticles().AddOnEffectFair(b.X, b.Y);
+
 				b.Draw();
 
 				if (b.IsDead)

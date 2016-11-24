@@ -28,9 +28,9 @@ namespace WarCircle.Screens
 			buttonToMenu.Draw();
 			textBall.Draw();
 
+			Models.ManagerFlyObjects.GetInstance().DrawAndUpdate();
 			Game.GetInstance().GetSystemParticles().Draw();
 
-			Models.ManagerFlyObjects.GetInstance().DrawAndUpdate();
 			im.Draw();
 
 			DrawLight();

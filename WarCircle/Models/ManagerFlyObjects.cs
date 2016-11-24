@@ -89,6 +89,9 @@ namespace WarCircle.Models
 
 				o.BasicPhysicsStep(dt);
 				o.Step(dt);
+
+				GameEngine.Game.GetInstance().GetSystemParticles().AddOnEffectFair(o.X, o.Y);
+
 				o.Draw();
 
 				for (int i = 0; i < im.GetBullets().Count; i++)

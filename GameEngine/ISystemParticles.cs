@@ -11,5 +11,6 @@ namespace GameEngine
 		void Step(float dt);
 		void Draw();
 		void AddOnFon(float x, float y, System.Drawing.PointF vel);
+		void AddOnEffectFair(float x, float y);
     }
 }
