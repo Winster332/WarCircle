@@ -143,8 +143,6 @@ namespace WarCircle.Models
 		public void Dispose()
 		{
 			objects.Clear();
-			objects = null;
-			rand = null;
 		}
 	}
 }

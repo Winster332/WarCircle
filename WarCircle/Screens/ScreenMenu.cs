@@ -13,12 +13,14 @@ namespace WarCircle.Screens
 		public event EventHandler IntentTo;
 		private Button buttonPlay;
 		private StringFormat sf;
+		public int recordBall;
 		public override void Dispose()
 		{
 			buttonPlay.Dispose();
 			sf.Dispose();
 			buttonPlay = null;
 			sf = null;
+			recordBall = 0;
 		}
 		public override void Step(float dt)
 		{
@@ -30,7 +32,7 @@ namespace WarCircle.Screens
 		}
 		public override void Draw()
 		{
-			Game.GetInstance().GetGraphics().Get().DrawString(Game.GetInstance().GetSettings().InfoUser.Record.ToString(), 
+			Game.GetInstance().GetGraphics().Get().DrawString(recordBall.ToString(), 
 				new Font("Calibri", 55), new SolidBrush(Color.FromArgb(180, 50, 50, 50)),
 				Game.GetInstance().GetSettings().WindowSize.Width / 2, Game.GetInstance().GetSettings().WindowSize.Height / 2 - 100, sf);
 
@@ -62,6 +64,8 @@ namespace WarCircle.Screens
 			buttonPlay.BorderThrick = 3;
 			buttonPlay.Click += (o, e) => {	IntentTo(new ScreenGame(), null); };
 			buttonPlay.Text = "ИГРАТЬ";
-		}
+
+			recordBall = Game.GetInstance().GetSettings().Load().InfoUser.Record;
+        }
 	}
 }

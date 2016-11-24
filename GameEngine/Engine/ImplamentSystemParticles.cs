@@ -10,9 +10,8 @@ namespace GameEngine.Engine
 	{
 		public void Dispose()
 		{
-			particles.Clear();
-			particles = null;
-			rand = null;
+			particlesEffect.Clear();
+		//	particles.Clear();
 		}
 		public List<ParticleBackground> particles;
 		public List<ParticleEffect> particlesEffect;

@@ -13,9 +13,26 @@ namespace WarCircle.Screens
 		public event EventHandler IntentTo;
 		private Button buttonToMenu;
 		private UIText textBall;
+		private int _currentBall;
 		private UIText textLive;
 		private Models.Im im;
-		private int currentBall;
+		private int currentBall
+		{
+			get
+			{
+				return _currentBall;
+			}
+			set
+			{
+				Game.GetInstance().GetSettings().Load();
+				if (value > Game.GetInstance().GetSettings().InfoUser.Record)
+				{
+					Game.GetInstance().GetSettings().InfoUser.Record = value;
+					Game.GetInstance().GetSettings().Save();
+				}
+				_currentBall = value;
+			}
+		}
 		private int currentLive;
 		public override void Dispose()
 		{
@@ -29,6 +46,9 @@ namespace WarCircle.Screens
 			textLive = null;
 			currentBall = 0;
 			currentLive = 0;
+			Game.GetInstance().GetSystemParticles().Dispose();
+			Models.ManagerFlyObjects.GetInstance().Dispose();
+			Models.ManagerFlyObjects.GetInstance().DeadObject -= ScreenGame_DeadObject;
 		}
 		public override void Draw()
 		{
@@ -78,14 +98,18 @@ namespace WarCircle.Screens
 			#endregion
 
 			currentBall = 0;
+			_currentBall = 0;
 			currentLive = 3;
 			im = new Models.Im();
 			Models.ManagerFlyObjects.GetInstance().SetIm(im);
-			Models.ManagerFlyObjects.GetInstance().DeadObject += (o, e) =>
-			{
-				currentBall++;
-			};
+			Models.ManagerFlyObjects.GetInstance().DeadObject += ScreenGame_DeadObject;
 		}
+
+		private void ScreenGame_DeadObject(object sender, EventArgs e)
+		{
+			currentBall++;
+		}
+
 		public override void Step(float dt)
 		{
 			Game.GetInstance().GetSystemParticles().Step(dt);
