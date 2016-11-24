@@ -9,6 +9,7 @@ namespace GameEngine.UI
 	public class Button : BaseUI
 	{
 		public event EventHandler Click;
+		public Point MouseScaleBorder { get; set; }
 		public new float Width
 		{
 			get
@@ -51,6 +52,7 @@ namespace GameEngine.UI
 		private bool IsEnable { get; set; }
 		public Button()
 		{
+			MouseScaleBorder = new Point(5, 3);
 			IsEnable = true;
 			Font = new System.Drawing.Font("Calibri", 14);
 			Width = 250;
@@ -81,28 +83,34 @@ namespace GameEngine.UI
 			if (IsEnable)
 			{
 				var mouse = Game.GetInstance().GetInput().GetMouse();
-
-				if (mouse.Item2 == MouseState.Move)
+				if (mouse.Item1 != null)
 				{
 					float mx = mouse.Item1.X;
 					float my = mouse.Item1.Y;
 
-					if (mx >= this.X - this.Width / 2 && mx <= this.X + this.Width / 2 &&
-						my >= this.Y - this.Height / 2 && my <= this.Y + this.Height / 2)
+					if (mouse.Item2 == MouseState.Move)
 					{
-						ScaleMouseMove.X = 5;
-						ScaleMouseMove.Y = 3;
+						if (mx >= this.X - this.Width / 2 && mx <= this.X + this.Width / 2 &&
+							my >= this.Y - this.Height / 2 && my <= this.Y + this.Height / 2)
+						{
+							ScaleMouseMove.X = MouseScaleBorder.X;
+							ScaleMouseMove.Y = MouseScaleBorder.Y;
+						}
+						else
+						{
+							ScaleMouseMove.X = 0;
+							ScaleMouseMove.Y = 0;
+						}
 					}
-					else
+					else if (mouse.Item2 == MouseState.Down)
 					{
-						ScaleMouseMove.X = 0;
-						ScaleMouseMove.Y = 0;
+						if (mx >= this.X - this.Width / 2 && mx <= this.X + this.Width / 2 &&
+							my >= this.Y - this.Height / 2 && my <= this.Y + this.Height / 2)
+						{
+							if (Click != null)
+								Click(this, null);
+						}
 					}
-				}
-				else if (mouse.Item2 == MouseState.Down)
-				{
-					if (Click != null)
-						Click(this, null);
 				}
 			}
 		}

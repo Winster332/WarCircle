@@ -45,12 +45,13 @@ namespace WarCircle.Screens
 			this.EnableLight(true, 5);
 			Console.WriteLine("show game screen");
 			buttonToMenu = new Button();
-			buttonToMenu.Width = 55;
+			buttonToMenu.Width = 65;
 			buttonToMenu.Height = 25;
 			buttonToMenu.Text = "МЕНЮ";
-			buttonToMenu.X = buttonToMenu.Width - 10;
+			buttonToMenu.X = buttonToMenu.Width - 30;
 			buttonToMenu.Y = buttonToMenu.Height - 10;
-			buttonToMenu.BorderThrick = 2;
+			buttonToMenu.MouseScaleBorder = new Point(-3,-2);
+			buttonToMenu.BorderThrick = 1;
 			buttonToMenu.Click += (o, e) => { IntentTo(this, null); };
 
 			textBall = new UIText();
@@ -69,7 +70,9 @@ namespace WarCircle.Screens
 
 			im.Step(dt);
 			buttonToMenu.Step(dt);
-			textBall.Step(dt);
+
+			if (textBall != null)
+				textBall.Step(dt);
 		}
 	}
 }

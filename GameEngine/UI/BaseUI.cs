@@ -16,5 +16,12 @@ namespace GameEngine.UI
 		public abstract void Step(float dt);
 		public abstract void Draw();
 		public abstract void Dispose();
+		public float Angle { get; set; }
+		public float VelocityAngular { get; set; }
+		public System.Drawing.PointF LinearVelocity { get; set; }
+		public void BasicPhysicsStep(float dt)
+		{
+
+		}
 	}
 }
