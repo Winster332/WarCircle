@@ -63,7 +63,7 @@ namespace WarCircle.Models
 		}
 		public void AddLive(float x, float y, float size, Color color, float angle, float velAngle, float vx, float vy)
 		{
-			Live live = new Live();
+			Triangle live = new Triangle();
 			live.X = x;
 			live.Y = y;
 			live.Radius = size;

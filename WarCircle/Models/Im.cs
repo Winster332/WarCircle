@@ -22,10 +22,13 @@ namespace WarCircle.Models
 			this.Color = System.Drawing.Color.FromArgb(100, 100, 100);
 			this.listBullet = new List<Bullet>();
 		}
+		public List<Bullet> GetBullets()
+		{
+			return listBullet;
+		}
 		public override void Dispose()
 		{
 		}
-
 		public override void Draw()
 		{
 			var graphicsState = Game.GetInstance().GetGraphics().Get().Save();

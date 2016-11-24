@@ -7,7 +7,7 @@ using GameEngine.UI;
 
 namespace WarCircle.Models
 {
-	public class Live : BaseUI
+	public class Triangle : BaseUI
 	{
 		public float Radius
 		{
@@ -29,7 +29,7 @@ namespace WarCircle.Models
         public override void Dispose()
 		{
 		}
-		public Live()
+		public Triangle()
 		{
 			points = new System.Drawing.PointF[3];
 		}

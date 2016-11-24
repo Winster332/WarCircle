@@ -57,7 +57,7 @@
     <Compile Include="Models\Bullet.cs" />
     <Compile Include="Models\Circle.cs" />
     <Compile Include="Models\Im.cs" />
-    <Compile Include="Models\Live.cs" />
+    <Compile Include="Models\Triangle.cs" />
     <Compile Include="Models\ManagerFlyObjects.cs" />
     <Compile Include="Models\Rectangle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
