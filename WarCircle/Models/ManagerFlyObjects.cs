@@ -10,6 +10,7 @@ namespace WarCircle.Models
 	public class ManagerFlyObjects : IDisposable
 	{
 		private List<GameEngine.UI.BaseUI> objects;
+		private Models.Im im;
 		private static ManagerFlyObjects instance;
 		private Random rand;
 		private int ConstHZGenerateObject;
@@ -23,6 +24,10 @@ namespace WarCircle.Models
 			{
 				ConstHZGenerateObject = value;
 			}
+		}
+		public void SetIm(Im im)
+		{
+			this.im = im;
 		}
 		private ManagerFlyObjects()
 		{
@@ -78,12 +83,29 @@ namespace WarCircle.Models
 		{
 			float dt = 1;
 
-			objects.ForEach(o =>
+			for (int j = 0; j < objects.Count; j++)
 			{
+				var o = objects[j];
+
 				o.BasicPhysicsStep(dt);
 				o.Step(dt);
 				o.Draw();
-			});
+
+				for (int i = 0; i < im.GetBullets().Count; i++)
+				{
+					var b = im.GetBullets()[i];
+					var distance = (float)Math.Sqrt(Math.Pow(b.X - o.X, 2) + Math.Pow(b.Y - o.Y, 2));
+
+					if (distance <= b.Radius + o.Radius)
+					{
+						b.IsDead = true;
+						o.IsDead = true;
+					}
+				}
+
+				if (o.IsDead)
+					objects.RemoveAt(j);
+			}
 		}
 		public void GenerateRandomModel()
 		{

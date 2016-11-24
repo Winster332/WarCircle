@@ -9,7 +9,6 @@ namespace WarCircle.Models
 {
 	public class Rectangle : BaseUI
 	{
-		public float Radius { get; set; }
 		public override void Dispose()
 		{
 			Radius = 10;

@@ -21,6 +21,7 @@ namespace WarCircle.Screens
 			textBall.Dispose();
 			textBall = null;
 			im.Dispose();
+			im = null;
 		}
 		public override void Draw()
 		{
@@ -63,6 +64,7 @@ namespace WarCircle.Screens
 			#endregion
 
 			im = new Models.Im();
+			Models.ManagerFlyObjects.GetInstance().SetIm(im);
 		}
 		public override void Step(float dt)
 		{

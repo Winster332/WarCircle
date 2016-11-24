@@ -10,8 +10,6 @@ namespace WarCircle.Models
 {
 	public class Circle : BaseUI
 	{
-
-		public float Radius { get; set; }
 		public Circle()
 		{
 

@@ -8,6 +8,7 @@ namespace GameEngine.UI
 {
 	public abstract class BaseUI : IDisposable
 	{
+		public float Radius { get; set; }
 		public float X { get; set; }
 		public float Y { get; set; }
 		public System.Drawing.Color Color { get; set; }

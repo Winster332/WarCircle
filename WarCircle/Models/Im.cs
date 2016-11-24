@@ -10,8 +10,6 @@ namespace WarCircle.Models
 	public class Im : BaseUI
 	{
 		private List<Bullet> listBullet;
-		public float Angle { get; set; }
-		public float Radius { get; set; }
 		public int Timeout = 50;
 		public bool IsRetimeout = false;
 		public Im()
@@ -33,12 +31,16 @@ namespace WarCircle.Models
 		{
 			var graphicsState = Game.GetInstance().GetGraphics().Get().Save();
 
-			listBullet.ForEach(b =>
+			for (int i = 0; i <listBullet.Count; i++)
 			{
+				var b = listBullet[i];
 				b.BasicPhysicsStep(1f);
 				b.Step(1f);
 				b.Draw();
-			});
+
+				if (b.IsDead)
+					listBullet.RemoveAt(i);
+			}
 
 			//	Game.GetInstance().GetGraphics().Get().Transform.RotateAt(Angle*180/(float)Math.PI, new System.Drawing.PointF(X - Radius, Y - Radius));
 			var matrix = new System.Drawing.Drawing2D.Matrix();

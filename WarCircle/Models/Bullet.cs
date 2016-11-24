@@ -10,7 +10,6 @@ namespace WarCircle.Models
 {
 	public class Bullet : BaseUI
 	{
-		public float Radius { get; set; }
 		public override void Dispose()
 		{
 		}
